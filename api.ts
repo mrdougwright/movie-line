@@ -8,4 +8,9 @@ export default class API {
     const data = await res.json()
     return data
   }
+
+  async getMovieImagesById(id: string) {
+    console.log(id)
+    { }
+  }
 }
