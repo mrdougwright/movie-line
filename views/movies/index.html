@@ -1,0 +1,21 @@
+<%- await include('views/shared/header.html', { title }); %>
+
+<div>
+  <h1>Movies List</h1>
+</div>
+
+<div style="display:flex; flex-wrap: wrap;">
+
+  <% data.forEach(movie => { %>
+
+  <div style="display:flex; margin: 0 10px;">
+    <a href="/movies/<%=movie.id%>">
+      <%= movie.title %>
+    </a>
+  </div>
+
+  <% }); %>
+
+</div>
+
+<%- await include('views/shared/footer.html'); %>

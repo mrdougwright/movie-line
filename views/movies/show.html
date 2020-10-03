@@ -6,16 +6,20 @@
 </div>
 
 <div style="display:flex">
-  <span>Summary</span>
-  <p><%= data.overview %></p>
-</div>
 
-<div style="display:flex">
-  <span>Released</span>
-  <p><%= data.release_date %></p>
-  <span>Runtime</span>
-  <p><%= data.runtime %> minutes</p>
-</div>
+  <div>
+    <img src="<%= data.posterImage %>" alt="movie poster: <%= data.title %>">
+  </div>
 
+  <div style="padding:10px">
+    <span style="font-weight: 600;">Summary</span>
+    <p><%= data.overview %></p>
+    <span style="font-weight: 600;">Released</span>
+    <p><%= data.release_date %></p>
+    <span style="font-weight: 600;">Runtime</span>
+    <p><%= data.runtime %> minutes</p>
+  </div>
+
+</div>
 
 <%- await include('views/shared/footer.html'); %>

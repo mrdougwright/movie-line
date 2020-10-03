@@ -1,0 +1,10 @@
+<%- await include('views/shared/header.html', { title }); %>
+
+<h1>Search for movies</h1>
+
+<form action="/movies/search" method="POST">
+  <input type="text" name="query" />
+  <input type="submit" />
+</form>
+
+<%- await include('views/shared/footer.html'); %>
