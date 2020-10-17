@@ -12,6 +12,11 @@ export default class API {
     return this.callAPI(url)
   }
 
+  getSimilar(movieId: string) {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${ENV.TMDB_API_KEY}`
+    return this.callAPI(url)
+  }
+
   searchMovies(query: string) {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${ENV.TMDB_API_KEY}&query=${query}`
     return this.callAPI(url)

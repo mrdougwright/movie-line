@@ -1,0 +1,10 @@
+<div style="display: flex;">
+  <% movies.forEach(movie => { %>
+  <div style="flex-direction: row; padding: 15px;">
+    <%= movie.title %>
+    <a href="<%=movie.id%>">
+      <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path %>" alt="movie poster: <%= movie.title %>">
+    </a>
+  </div>
+  <% }); %>
+</div>

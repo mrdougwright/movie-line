@@ -8,12 +8,13 @@ export default class Movie {
 
   async getById(id: string) {
     const movieData = await this.api.getMovieById(id)
-    // todo: cache getConfig and dynamically build this url:
-    const posterImage = `https://image.tmdb.org/t/p/w300${movieData.poster_path}`
-    return {
-      ...movieData,
-      posterImage: posterImage
-    }
+    // todo: cache getConfig and dynamically build image url:
+    return movieData
+  }
+
+  async getSimilar(id: string) {
+    const moviesData = await this.api.getSimilar(id)
+    return moviesData
   }
 
   async search(query: string) {
