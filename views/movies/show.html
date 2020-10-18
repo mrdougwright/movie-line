@@ -5,7 +5,7 @@
   <h3><i><%= data.tagline %></i></h3>
 </div>
 
-<div style="display:flex">
+<div style="display:flex; height: 450px;">
 
   <div>
     <img src="https://image.tmdb.org/t/p/w300<%= data.poster_path %>" alt="movie poster: <%= data.title %>">
@@ -21,16 +21,34 @@
   </div>
 
   <div>
-    <h3>Cast</h3>
-    <% data.credits.cast.slice(0,10).map(person => { %>
-    <span>
-      <a href="/people/<%=person.id%>"><%= person.name %></a>
-    </span>
-    <% }) %>
+    <div>
+      <h3>Cast</h3>
+      <% data.credits.cast.slice(0,10).map(person => { %>
+      <span>
+        <a href="/people/<%=person.id%>"><%= person.name %></a>
+      </span>
+      <% }) %>
+    </div>
+    <div>
+      <h3>Crew</h3>
+      <% data.credits.crew.slice(0,10).map(person => { %>
+      <div style="display: flex; flex-direction: row; justify-content: space-between;">
+        <div>
+          <a href="/people/<%=person.id%>"><%= person.name %></a>
+        </div>
+        <div>
+          <%= person.job %>
+        </div>
+      </div>
+      <% }) %>
+    </div>
   </div>
 
 </div>
 
-<%- await include('views/components/carousel.html', { movies: data.movies }) %>
+<div>
+  <h3>Similar Movies</h3>
+  <%- await include('views/components/carousel.html', { movies: data.movies }) %>
+</div>
 
 <%- await include('views/shared/footer.html'); %>
