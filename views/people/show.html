@@ -1,0 +1,29 @@
+<%- await include('views/shared/header.html', { title }); %>
+
+<h2> <%= data.person.name %> </h2>
+<div style="display:flex">
+
+  <div>
+    <img src="https://image.tmdb.org/t/p/w300<%= data.person.profile_path %>"
+      alt="person poster: <%= data.person.name %>">
+  </div>
+
+  <div style="padding:10px">
+    <span style="font-weight: 600;">Born</span>
+    <p><%= data.person.birthday %></p>
+    <p><%= data.person.place_of_birth %></p>
+    <span style="font-weight: 600;">Popularity</span>
+    <p><%= data.person.popularity %></p>
+    <span style="font-weight: 600;">Biography</span>
+    <p><%= data.person.biography %></p>
+  </div>
+
+</div>
+<div>
+  <h3>Movies</h3>
+  <%- await include('views/components/carousel.html', { movies: data.credits }) %>
+</div>
+
+
+
+<%- await include('views/shared/footer.html'); %>

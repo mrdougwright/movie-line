@@ -2,6 +2,7 @@ import { opine, json, serveStatic, urlencoded } from 'https://deno.land/x/opine@
 import { renderFileToString } from 'https://deno.land/x/dejs@0.7.0/mod.ts'
 import { join, dirname } from 'https://deno.land/std@0.70.0/path/mod.ts'
 
+import people from './controllers/people_ctrlr.ts'
 import movies from './controllers/movies_ctrlr.ts'
 
 const app = opine()
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'Deno Sample' })
 })
 
+app.use('/people', people)
 app.use('/movies', movies)
 
 

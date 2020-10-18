@@ -20,6 +20,15 @@
     <p><%= data.runtime %> minutes</p>
   </div>
 
+  <div>
+    <h3>Cast</h3>
+    <% data.credits.cast.slice(0,10).map(person => { %>
+    <span>
+      <a href="/people/<%=person.id%>"><%= person.name %></a>
+    </span>
+    <% }) %>
+  </div>
+
 </div>
 
 <%- await include('views/components/carousel.html', { movies: data.movies }) %>

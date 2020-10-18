@@ -7,8 +7,13 @@ export default class API {
     return this.callAPI(url)
   }
 
-  getMovieById(id: string) {
-    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${ENV.TMDB_API_KEY}`
+  getMovieCredits(movieId: string) {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${ENV.TMDB_API_KEY}`
+    return this.callAPI(url)
+  }
+
+  getMovieById(movieId: string) {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${ENV.TMDB_API_KEY}`
     return this.callAPI(url)
   }
 
@@ -19,6 +24,16 @@ export default class API {
 
   searchMovies(query: string) {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${ENV.TMDB_API_KEY}&query=${query}`
+    return this.callAPI(url)
+  }
+
+  getPersonById(personId: string) {
+    const url = `https://api.themoviedb.org/3/person/${personId}?api_key=${ENV.TMDB_API_KEY}`
+    return this.callAPI(url)
+  }
+
+  getPersonCredits(personId: string) {
+    const url = `https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=${ENV.TMDB_API_KEY}`
     return this.callAPI(url)
   }
 

@@ -17,9 +17,13 @@ export default class Movie {
     return moviesData
   }
 
+  async getCredits(id: string) {
+    const creditData = await this.api.getMovieCredits(id)
+    return creditData
+  }
+
   async search(query: string) {
     const resp = await this.api.searchMovies(query)
-    console.log("search resp: ", resp)
     return resp.results
   }
 }
