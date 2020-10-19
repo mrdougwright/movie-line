@@ -1,4 +1,5 @@
 import API from '../api.ts'
+import { Credit } from '../models/types.ts'
 
 export default class People {
   api: any
@@ -14,5 +15,10 @@ export default class People {
   async getCredits(id: string) {
     const data = await this.api.getPersonCredits(id)
     return data
+  }
+
+  movieChart(credits: Credit[]) {
+    const sorted = credits.sort((a, b) => a.popularity - b.popularity)
+    return sorted
   }
 }

@@ -20,10 +20,14 @@
     <p><%= data.person.biography %></p>
   </div>
 
+
 </div>
 <div>
   <h3>Movies</h3>
   <%- await include('views/components/carousel.html', { movies: data.credits }) %>
+</div>
+<div>
+  <%- await include('views/components/movie_graph.html', data ) %>
 </div>
 
 
