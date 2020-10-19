@@ -1,4 +1,5 @@
 import API from '../api.ts'
+import { CrewMember } from '../models/types.ts'
 
 export default class Movie {
   api: any
@@ -25,5 +26,15 @@ export default class Movie {
   async search(query: string) {
     const resp = await this.api.searchMovies(query)
     return resp.results
+  }
+
+  getEssentialCrew(people: CrewMember[]) {
+    const essentialRoles = ["Director", "Producer", "Screenplay", "Editor", "Director of Photography"]
+    const crew: CrewMember[] = []
+    essentialRoles.forEach(role => {
+      const person = people.find(p => p.job === role)
+      if (person) return crew.push(person)
+    })
+    return crew
   }
 }

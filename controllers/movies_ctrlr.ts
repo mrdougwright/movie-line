@@ -8,15 +8,19 @@ movies.get('/', async (req, res) => {
 });
 
 movies.get('/:id', async (req: { params: { id: string } }, res) => {
-  const movieModel = new Movie
-  const movie = await movieModel.getById(req.params.id)
-  const { results: movies } = await movieModel.getSimilar(req.params.id)
-  const credits = await movieModel.getCredits(req.params.id)
+  const movie = new Movie
+  const movieInfo = await movie.getById(req.params.id)
+  const { results: movies } = await movie.getSimilar(req.params.id)
+  const credits = await movie.getCredits(req.params.id)
+  const crew = movie.getEssentialCrew(credits.crew)
+
   const data = {
     credits,
-    ...movie,
+    crew,
+    ...movieInfo,
     movies
   }
+
   res.render('movies/show', { title: 'Movies by id', data })
 });
 
