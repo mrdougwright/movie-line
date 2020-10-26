@@ -21,4 +21,10 @@ export default class People {
     const sorted = credits.sort((a, b) => a.popularity - b.popularity)
     return sorted
   }
+
+  sortByReleaseDate(credits: Credit[]) {
+    return credits.slice().sort((a, b) => (
+      Date.parse(b.release_date) - Date.parse(a.release_date)
+    ))
+  }
 }

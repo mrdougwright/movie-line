@@ -8,8 +8,9 @@ people.get('/:id', async (req: { params: { id: string } }, res) => {
   const person = await people.getById(req.params.id)
   const { cast: credits } = await people.getCredits(req.params.id)
   const movieData = people.movieChart(credits)
+  const creditData = people.sortByReleaseDate(credits)
   const data = {
-    credits,
+    credits: creditData,
     movieData,
     person,
   }
