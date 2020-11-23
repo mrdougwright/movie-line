@@ -25,7 +25,10 @@ export default class Movie {
 
   async search(query: string) {
     const resp = await this.api.searchMovies(query)
-    return resp.results
+    const resP = await this.api.searchPeople(query)
+    console.log(resP)
+    console.log(resp)
+    return resp.results.concat(resP.results)
   }
 
   getEssentialCrew(people: CrewMember[]) {

@@ -27,6 +27,11 @@ export default class API {
     return this.callAPI(url)
   }
 
+  searchPeople(query: string) {
+    const url = `https://api.themoviedb.org/3/search/person?api_key=${ENV.TMDB_API_KEY}&query=${query}`
+    return this.callAPI(url)
+  }
+
   getPersonById(personId: string) {
     const url = `https://api.themoviedb.org/3/person/${personId}?api_key=${ENV.TMDB_API_KEY}`
     return this.callAPI(url)

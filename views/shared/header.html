@@ -9,12 +9,10 @@
 
 <body>
   <nav>
-    <ul style="list-style-type: none; display: flex;">
-      <li style="margin: 0 10px;">
-        <a href="/">home</a>
-      </li>
-      <li style="margin: 0 10px;">
-        <a href="/movies">search</a>
-      </li>
+    <ul style="list-style-type: none; display: flex; margin-bottom: -20px;">
+      <form style="position: absolute; right: 10px;" action="/movies/search" method="POST">
+        <input type="text" name="query" />
+        <button>search</button>
+      </form>
     </ul>
   </nav>

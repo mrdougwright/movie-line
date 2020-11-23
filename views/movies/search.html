@@ -2,9 +2,19 @@
 
 <h1>Search for movies</h1>
 
-<form action="/movies/search" method="POST">
-  <input type="text" name="query" />
-  <input type="submit" />
-</form>
+
+
+<div style="margin-top: 10px; display:flex; flex-wrap: wrap;">
+  <% data && data.forEach(movie => { %>
+
+  <div style="display:flex; margin: 0 10px;">
+    <a href="/movies/<%=movie.id%>">
+      <%= movie.title %>
+    </a>
+  </div>
+
+  <% }); %>
+
+</div>
 
 <%- await include('views/shared/footer.html'); %>
