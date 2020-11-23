@@ -1,0 +1,33 @@
+<%- await include('views/shared/header.html', { title }); %>
+
+<h2>Movies</h2>
+
+<div style="margin-top: 10px; display:flex; flex-wrap: wrap;">
+  <% data && data.movies.forEach(movie => { %>
+
+  <div style="display:flex; margin: 0 10px;">
+    <a href="/movies/<%=movie.id%>">
+      <%= movie.title %>
+    </a>
+  </div>
+
+  <% }); %>
+
+</div>
+
+<h2>People</h2>
+
+<div style="margin-top: 10px; display:flex; flex-wrap: wrap;">
+  <% data && data.people.forEach(person => { %>
+
+  <div style="display:flex; margin: 0 10px;">
+    <a href="/people/<%=person.id%>">
+      <%= person.name %>
+    </a>
+  </div>
+
+  <% }); %>
+
+</div>
+
+<%- await include('views/shared/footer.html'); %>

@@ -1,10 +1,11 @@
 import { Router } from 'https://deno.land/x/opine@0.22.2/mod.ts';
 import Movie from '../models/movie.ts'
+import People from '../models/people.ts'
 
 const movies = new Router();
 
 movies.get('/', async (req, res) => {
-  res.render('movies/search', { title: 'Search for movies', data: undefined })
+  res.render('results', { title: 'Search for movies', data: undefined })
 });
 
 movies.get('/:id', async (req: { params: { id: string } }, res) => {
@@ -25,9 +26,13 @@ movies.get('/:id', async (req: { params: { id: string } }, res) => {
 });
 
 movies.post('/search', async (req: { parsedBody: { query: string } }, res: any) => {
-  const movie = new Movie
-  const data = await movie.search(req.parsedBody.query)
-  res.render('movies/search', { title: 'Movies list', data })
+  const movies = await new Movie().search(req.parsedBody.query)
+  const people = await new People().search(req.parsedBody.query)
+  const data = {
+    people,
+    movies,
+  }
+  res.render('results', { title: 'Movies & People list', data })
 })
 
 export default movies;

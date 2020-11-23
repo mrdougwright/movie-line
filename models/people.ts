@@ -22,6 +22,11 @@ export default class People {
     }
   }
 
+  async search(query: string) {
+    const resp = await this.api.searchPeople(query)
+    return resp.results
+  }
+
   movieChart(credits: Credit[]) {
     const sorted = credits.sort((a, b) => a.popularity - b.popularity)
     return sorted
