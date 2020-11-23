@@ -5,9 +5,9 @@
       <div style="transform-origin: 0 0; transform: rotate(-75deg);"><%= c.popularity %></div>
       <div style="height: 20px; width: 50px; 
           position: absolute; left: 0; right: 0; 
-          bottom: 0; top: <%= 200 + c.title.length %>px; 
+          bottom: 0; top: <%= 200 + (c.title || c.name).length %>px; 
           transform: rotate(-90deg); white-space: nowrap">
-        <%= c.title %>
+        <%= c.title || c.name %>
       </div>
     </div>
   </a>

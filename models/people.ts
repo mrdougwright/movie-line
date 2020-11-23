@@ -1,5 +1,5 @@
 import API from '../api.ts'
-import { Credit } from '../models/types.ts'
+import { Credit, CrewCredit, Person } from '../models/types.ts'
 
 export default class People {
   api: any
@@ -12,9 +12,14 @@ export default class People {
     return person
   }
 
-  async getCredits(id: string) {
-    const data = await this.api.getPersonCredits(id)
-    return data
+  async getCredits(person: Person) {
+    if (person.known_for_department === "Directing") {
+      const { crew: credits } = await this.api.getCrewCredits(person.id)
+      return credits.filter((movie: CrewCredit) => movie.job === "Director")
+    } else {
+      const { cast: credits } = await this.api.getCastCredits(person.id)
+      return credits
+    }
   }
 
   movieChart(credits: Credit[]) {

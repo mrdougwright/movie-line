@@ -32,8 +32,13 @@ export default class API {
     return this.callAPI(url)
   }
 
-  getPersonCredits(personId: string) {
+  getCastCredits(personId: string) {
     const url = `https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=${ENV.TMDB_API_KEY}`
+    return this.callAPI(url)
+  }
+
+  getCrewCredits(personId: string) {
+    const url = `https://api.themoviedb.org/3/person/${personId}/combined_credits?api_key=${ENV.TMDB_API_KEY}`
     return this.callAPI(url)
   }
 

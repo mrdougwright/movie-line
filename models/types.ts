@@ -26,3 +26,38 @@ export type Credit = {
   vote_average: number,
   vote_count: number
 }
+
+export type CrewCredit = {
+  backdrop_path: string,
+  credit_id: string,
+  department: string,
+  episode_count: number,
+  first_air_date: string,
+  id: number,
+  job: string,
+  media_type: string,
+  name: string,
+  original_language: string,
+  original_name: string,
+  overview: string,
+  popularity: number,
+  poster_path: string,
+  vote_average: number,
+  vote_count: number
+}
+
+export type Person = {
+  adult: boolean,
+  also_known_as: string[],
+  biography: string,
+  birthday: string,
+  deathday: string | null,
+  homepage: string | null,
+  id: number,
+  imdb_id: string,
+  known_for_department: string,
+  name: string,
+  place_of_birth: string,
+  popularity: number,
+  profile_path: string
+}
