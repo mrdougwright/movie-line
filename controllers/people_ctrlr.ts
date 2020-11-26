@@ -1,14 +1,14 @@
-import { Router } from 'https://deno.land/x/opine@0.22.2/mod.ts';
+import API from '../api.ts'
 import People from '../models/people.ts'
+import { Router } from 'https://deno.land/x/opine@0.22.2/mod.ts';
 
 const people = new Router();
 
 people.get('/:id', async (req: { params: { id: string } }, res) => {
-  const people = new People
-  const person = await people.getById(req.params.id)
-  const credits = await people.getCredits(person)
-  const movieData = people.movieChart(credits)
-  const creditData = people.sortByReleaseDate(credits)
+  const person = await API.getPersonById(req.params.id)
+  const credits = await People.getCredits(person)
+  const movieData = People.sortByPopularity(credits)
+  const creditData = People.sortByReleaseDate(credits)
   const data = {
     credits: creditData,
     movieData,
