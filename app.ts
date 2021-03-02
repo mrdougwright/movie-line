@@ -7,10 +7,14 @@ import { parse } from 'https://deno.land/std/flags/mod.ts';
 import people from './controllers/people_ctrlr.ts'
 import movies from './controllers/movies_ctrlr.ts'
 
-const { args } = Deno
-const DEFAULT_PORT = 3333
+const { args, exit } = Deno
 const argPort = parse(args).port
-const listenPort = argPort ? Number(argPort) : DEFAULT_PORT
+const port = argPort ? Number(argPort) : 3333
+
+if (isNaN(port)) {
+  console.log(`Port: ${port} is not a number.`)
+  exit(1)
+}
 
 const app = opine()
 const __dirname = dirname(import.meta.url)
@@ -34,5 +38,5 @@ app.use('/people', people)
 app.use('/movies', movies)
 
 
-app.listen(listenPort)
-console.log(`running on port ${listenPort}`)
+app.listen(port)
+console.log(`running on port ${port}`)
