@@ -1,42 +1,22 @@
-import { opine, json, serveStatic, urlencoded } from 'https://deno.land/x/opine@0.22.2/mod.ts'
-import { renderFileToString } from 'https://deno.land/x/dejs@0.7.0/mod.ts'
-import { join, dirname } from 'https://deno.land/std@0.70.0/path/mod.ts'
-// for Heroku
-import { parse } from 'https://deno.land/std/flags/mod.ts';
+import {
+  dirname,
+  join,
+  createError,
+  opine,
+  json,
+  urlencoded,
+  serveStatic,
+  Response,
+  Request,
+  NextFunction,
+  renderFileToString,
+} from "./deps.ts";
+import indexRouter from "./routes/index.ts";
+import moviesRouter from "./routes/movies.ts";
+import peopleRouter from "./routes/people.ts";
 
-import people from './controllers/people_ctrlr.ts'
-import movies from './controllers/movies_ctrlr.ts'
-
-const { args, exit } = Deno
-const argPort = parse(args).port
-const port = argPort ? Number(argPort) : 3333
-
-if (isNaN(port)) {
-  console.log(`Port: ${port} is not a number.`)
-  exit(1)
-}
-
-const app = opine()
 const __dirname = dirname(import.meta.url)
 
-app.engine('.html', renderFileToString)
-app.use(serveStatic(join(__dirname, 'public')))
+const app = opine()
 
-
-// app.use(json())
-
-// used for parsing form input
-app.use(urlencoded())
-
-app.set('view engine', 'html')
-
-app.get('/', (req, res) => {
-  res.render('index', { title: 'Deno Sample' })
-})
-
-app.use('/people', people)
-app.use('/movies', movies)
-
-
-app.listen(port)
-console.log(`running on port ${port}`)
+// https://dev.to/craigmorten/opine-tutorial-part-2-creating-a-website-in-deno-37o3

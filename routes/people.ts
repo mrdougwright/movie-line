@@ -1,10 +1,10 @@
+import { Router } from '../deps.ts';
 import API from '../api.ts'
 import People from '../models/people.ts'
-import { Router } from 'https://deno.land/x/opine@0.22.2/mod.ts';
 
-const people = new Router();
+const router = Router();
 
-people.get('/:id', async (req: { params: { id: string } }, res) => {
+router.get('/:id', async (req: { params: { id: string } }, res) => {
   const person = await API.getPersonById(req.params.id)
   const credits = await People.getCredits(person)
   const movieData = People.sortByPopularity(credits)
@@ -17,4 +17,4 @@ people.get('/:id', async (req: { params: { id: string } }, res) => {
   res.render('people/show', { title: 'Person by id', data })
 });
 
-export default people;
+export default router;
