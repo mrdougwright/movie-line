@@ -8,10 +8,11 @@ export default class People {
       return credits.filter((movie: CrewCredit) => movie.job === "Director")
     } else {
       const { cast: credits } = await API.getCastCredits(person.id)
-      return credits
+      return credits.filter((movie: Credit) => movie.poster_path)
     }
   }
 
+  // was used by movie graph
   static sortByPopularity(credits: Credit[]) {
     const sorted = credits.sort((a, b) => a.popularity - b.popularity)
     return sorted

@@ -1,11 +1,13 @@
 <div style="display: flex; overflow: auto; background: #eef0f0;">
-  <% movies.forEach(movie => { %>
-  <div style="flex-direction: column; padding: 15px;">
-    <span><%= movie.title || movie.name %></span>
-    <a href="/movies/<%=movie.id%>">
-      <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path %>"
-        alt="movie poster: <%= movie.title || movie.name %>">
-    </a>
-  </div>
-  <% }); %>
+  <% movies.forEach(movie=> { %>
+    <div style="flex-direction: column; padding: 15px;">
+      <span>
+        <%= movie.title || movie.name %>
+      </span>
+      <a href="/movies/<%=movie.id%>">
+        <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path %>"
+          alt="movie poster: <%= movie.title || movie.name %>">
+      </a>
+    </div>
+    <% }); %>
 </div>
