@@ -1,6 +1,6 @@
 To run
 ```
-deno run -A app.ts
+deno run -A entrypoint.ts
 ```
 
 Using embedded javascript templates (EJS)

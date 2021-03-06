@@ -1,10 +1,10 @@
 import { Router } from '../deps.ts'
-import Movie from '../models/movie.ts'
 import API from '../api.ts';
+import Movie from '../models/movie.ts'
 
 const router = Router();
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
   res.render('results', { title: 'Search for movies', data: undefined })
 });
 
